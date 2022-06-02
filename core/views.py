@@ -1,8 +1,10 @@
 from django.shortcuts import render
+from .models import Product
 
 
 def index(request):
-    print('------------------------------------------------------------------------------------------------------')
+
+    """print('------------------------------------------------------------------------------------------------------')
     print(f'{dir(request)}')
     print(f'Method: {request.method}')
     #(f"headers: {request.headers}")
@@ -13,15 +15,22 @@ def index(request):
     if str(request.user) == 'AnonymousUser':
         login = 'The user is anonymous'
     else:
-        login = f'the user is: {request.user}'
+        login = f'the user is: {request.user}'"""
+
+    products = Product.objects.all()
 
     context = {
         'course': 'Dev with Django framework',
         'other': 'Django is Great !',
-        'login': login
+        'products': products
     }
     return render(request, 'index.html', context)
 
 
-def concact(request):
+def contact(request):
     return render(request, 'contact.html')
+
+
+def product(request, pk):
+    print(pk)
+    return render(request, 'product.html')
