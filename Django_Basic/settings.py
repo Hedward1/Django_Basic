@@ -14,6 +14,8 @@ from pathlib import Path
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from django.conf.global_settings import LOGOUT_REDIRECT_URL
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -120,7 +122,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'  # used while development
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # used in production
+
+LOGOUT_REDIRECT_URL = 'index'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
