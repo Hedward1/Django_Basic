@@ -5,7 +5,6 @@ from django.http import HttpResponse
 
 
 def index(request):
-
     """print('------------------------------------------------------------------------------------------------------')
     print(f'{dir(request)}')
     print(f'Method: {request.method}')
@@ -34,7 +33,7 @@ def contact(request):
 
 
 def product(request, pk):
-    #prod = Product.objects.get(id=pk)
+    # prod = Product.objects.get(id=pk)
     prod = get_object_or_404(Product, id=pk)
 
     context = {
@@ -47,3 +46,5 @@ def error404(request, excption):
     return render(request, '404.html')
 
 
+def error500(request):
+    return render(request, '404.html')
