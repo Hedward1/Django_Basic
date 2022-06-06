@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import Product
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponse
 
 
 def index(request):
@@ -32,5 +34,16 @@ def contact(request):
 
 
 def product(request, pk):
-    print(pk)
-    return render(request, 'product.html')
+    #prod = Product.objects.get(id=pk)
+    prod = get_object_or_404(Product, id=pk)
+
+    context = {
+        'product': prod
+    }
+    return render(request, 'product.html', context)
+
+
+def error404(request, excption):
+    return render(request, '404.html')
+
+
